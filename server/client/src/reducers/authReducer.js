@@ -1,5 +1,6 @@
-// Null if Request have not complete
+import { FETCH_USER } from '../actions/types';
 
+// Null if Request have not complete
 export default function(state = null, action) {
     switch (action.type) {
         case FETCH_USER:
