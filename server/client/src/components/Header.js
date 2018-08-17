@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
+import Payment from './Payment';
 
 class Header extends React.Component {
     renderContent() {
@@ -14,7 +15,14 @@ class Header extends React.Component {
                     </li>
                 );
             default:
-                return <h1>Loginnnn</h1>;
+                return [
+                    <li key="1">
+                        <Payment />
+                    </li>,
+                    <li key="2">
+                        <a>Logout</a>
+                    </li>,
+                ];
                 break;
         }
     }
