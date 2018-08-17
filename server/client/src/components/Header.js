@@ -16,6 +16,7 @@ class Header extends React.Component {
                 );
             default:
                 return [
+                    <li key="1">Credits: {this.props.auth.credits}</li>,
                     <li key="1">
                         <Payment />
                     </li>,
