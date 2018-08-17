@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
+const bodyParser = require('body-parser');
 
 require('./models/User');
 require('./services/passport');
@@ -17,7 +18,8 @@ app.use(
     })
 );
 
-console.log('initialize');
+app.use(bodyParser.json());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
