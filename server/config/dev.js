@@ -6,4 +6,5 @@ module.exports = {
     sendGridKey: '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',
     stripePublishableKey: 'pk_test_x51ZkXX0U0zQnsLHii24DKu0',
     stripeSecretKey: 'sk_test_ZsJ04gMH0pdzPDGwnDFMTRey',
+    redirectDomain: '',
 };

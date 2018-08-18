@@ -27,4 +27,8 @@ module.exports = (app) => {
             res.status(422).send(err);
         }
     });
+
+    app.get('/api/survey/thanks', (req, res) => {
+        res.send('Thanks');
+    });
 };
