@@ -12,6 +12,8 @@ class Mailer extends helper.Mail {
         this.recipients = this.formatAddresses(recipients);
         this.addContent(this.body);
         this.addClickTracking();
+        this.addRecipients();
+        this.sgApi = sendgrid(keys.sendGridKey);
     }
 
     formatAddresses(recipients) {
@@ -26,6 +28,26 @@ class Mailer extends helper.Mail {
 
         trackingSetting.setClickTracking(clickTraking);
         this.addClickTracking(trackingSetting);
+    }
+    addRecipients() {
+        const personalize = new helper.Personalization();
+        this.recipients.forEach((recipients) => {
+            personalize.addTo(recipient);
+        });
+        this.addPersonalization(personalize);
+    }
+
+    async send() {
+        const request = this.sgApi.emptyRequest({
+            method: 'POST',
+            path: '/v3/mail/send',
+            body: this.toJSON(),
+        });
+
+        console.log('Request:\n', request);
+
+        const response = await this.sgApi.API(request);
+        return response;
     }
 }
 
