@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default () => {
-    return `
-    <div>
-        <input />
-    </div>
-`;
+export default ({ input }) => {
+    return (
+        <div>
+            <input {...input} />
+        </div>
+    );
 };
