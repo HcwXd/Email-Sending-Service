@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import surveyField from './surveyField';
 
 class SurveyForm extends Component {
-    render() {
+    renderFields() {
         return `
+        <div>
+            <Field
+                type="text"
+                name="surveyTitle"
+                component={surveyField}
+            />
+        </div>
+        `;
+    }
+
+    render() {
+        return (
             <div>
                 <form onSubmit={this.props.handleSubmit(values)}>
-                    <Field
-                        type="text"
-                        name="surveyTitle"
-                        component="input"
-                    />
+                    {this.renderFields()}
                     <button type="submit">Submit</button>
                 </form>
             </div>
-        `;
+        );
     }
 }
 
