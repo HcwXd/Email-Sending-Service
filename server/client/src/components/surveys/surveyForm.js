@@ -7,6 +7,7 @@ class SurveyForm extends Component {
         return `
         <div>
             <Field
+                label="Survey Title"
                 type="text"
                 name="surveyTitle"
                 component={surveyField}
