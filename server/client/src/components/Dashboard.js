@@ -7,9 +7,11 @@ const Dashboard = () => {
             Dashboard
             <div className="fixed-action-btn">
                 <Link to="/survey/new" className="btn-floating btn-large red">
-                    <i className="materialize-icons">add</i>
+                    <i className="material-icons">add</i>
                 </Link>
             </div>
         </div>
     );
 };
+
+export default Dashboard;

@@ -5,7 +5,7 @@ export default (emails) => {
         .split(',')
         .map((email) => email.trim())
         .filter((email) => re.test(email) === false);
-    if (invalidEmails.length) {
-        return `These are invalid: ${invalidEmails}`;
+    if (invalidEmailsArray.length) {
+        return `These are invalid: ${invalidEmailsArray}`;
     }
 };
