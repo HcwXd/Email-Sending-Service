@@ -3,7 +3,6 @@ const requireLogin = require('../middlewares/requireLogin');
 const requireCredits = require('../middlewares/requireCredits');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplate/surveyTemplate');
-const mailer = new Mailer(survey, surveyTemplate(template));
 
 module.exports = (app) => {
     app.post('/api/surveys', requireLogin, requireCredits, (req, res) => {
@@ -16,5 +15,8 @@ module.exports = (app) => {
             _user: req.user.id,
             dateSent: Date.now(),
         });
+        const mailer = new Mailer(survey, surveyTemplate(template));
+
+        mailer.send();
     });
 };
