@@ -41,6 +41,9 @@ module.exports = (app) => {
                 return { email, surveyId: match.surveyId, choice: match.choice };
             }
         });
+
+        const compactEvents = _.compact(event);
+        const uniqueEvents = _.uniqBy(compactEvents, 'email', 'surveyId');
     });
 
     app.get('/api/survey/thanks', (req, res) => {
