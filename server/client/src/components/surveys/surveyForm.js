@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
-import surveyField from './surveyField';
+import SurveyField from './SurveyField';
 const FIELDS = [
     {
         label: 'Campaign Title',
@@ -29,7 +29,7 @@ class SurveyForm extends Component {
                         label={label}
                         type="text"
                         name={name}
-                        component={surveyField}
+                        component={SurveyField}
                     />`;
         });
     }
@@ -37,7 +37,7 @@ class SurveyForm extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.props.handleSubmit(values)}>
+                <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
                     {this.renderFields()}
                     <Link to="/surveys" className="red btn-flat white-text">
                         Cancel
