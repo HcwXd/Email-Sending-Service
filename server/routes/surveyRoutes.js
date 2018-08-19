@@ -9,6 +9,11 @@ const Path = require('path-parser');
 const { URL } = require('url');
 
 module.exports = (app) => {
+    app.get('/api/surveys', requireLogin, async (req, res) => {
+        const surveys = await Survey.find({ _user: req.user.id });
+        res.send(surveys);
+    });
+
     app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         const { title, subject, body, recipients } = req.body;
         const survey = new Survey({
@@ -60,6 +65,10 @@ module.exports = (app) => {
                 ).exec();
             })
             .value();
+    });
+
+    app.get('/api/surveys/:surveyId/:choice', (req, res) => {
+        res.send('Thanks for voting!');
     });
 
     app.get('/api/survey/thanks', (req, res) => {
