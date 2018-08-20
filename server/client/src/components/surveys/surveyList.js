@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSurveys } from 'react';
+import { fetchSurveys } from '../../actions';
 
 class SurveyList extends Component {
     componentDidMount() {
@@ -24,7 +24,12 @@ class SurveyList extends Component {
         });
     }
     render() {
-        return <div>{this.renderSurveys()}</div>;
+        return (
+            <div>
+                <h1>Dashboard</h1>
+                {this.renderSurveys()}
+            </div>
+        );
     }
 }
 

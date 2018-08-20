@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { BrowserRouter, Route } from 'react-router-dom';
+
 import Header from './Header';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
+import Landing from './Landing';
 
-const Landing = () => <h2> Landing </h2>;
-
-class App extends React.Component {
-    componentWillMount() {
+class App extends Component {
+    componentDidMount() {
         this.props.fetchUser();
+        console.log('AppMount');
     }
     render() {
         return (

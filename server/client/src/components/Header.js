@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import Payment from './Payment';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,6 @@ class Header extends React.Component {
                         <a href="/api/logout">Logout</a>
                     </li>,
                 ];
-                break;
         }
     }
     render() {

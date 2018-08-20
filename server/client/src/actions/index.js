@@ -7,6 +7,7 @@ export const fetchSurveys = () => async (dispatch) => {
 };
 
 export const fetchUser = () => async (dispatch) => {
+    console.log('fetchUser');
     const res = await axios.get('/api/current_user');
     dispatch({ type: FETCH_USER, payload: res.data });
 };
