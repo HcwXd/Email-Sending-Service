@@ -6,12 +6,10 @@ const mongoose = require('mongoose');
 const Users = mongoose.model('users');
 
 passport.serializeUser((user, done) => {
-    console.log('serializeUser');
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    console.log('deserializeUser');
     Users.findById(id).then((user) => {
         done(null, user);
     });
@@ -23,17 +21,14 @@ passport.use(
             clientID: keys.googleClientID,
             clientSecret: keys.googleClientSecret,
             callbackURL: '/auth/google/callback',
-            proxy: true,
+            proxy: true, // For production with redirect Url mismatch
         },
         (accessToken, refreshToken, profile, done) => {
-            console.log('Start passport');
             Users.findOne({ googleId: profile.id }).then((existingUser) => {
                 if (existingUser) {
                     done(null, existingUser);
-                    console.log('existingUser');
                 } else {
                     new Users({ googleId: profile.id }).save().then((user) => done(null, user));
-                    console.log('new Users');
                 }
             });
         }

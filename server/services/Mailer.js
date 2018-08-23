@@ -1,30 +1,15 @@
-console.log('a');
-
 const sendGrid = require('sendGrid');
-console.log('a');
-
 const helper = sendGrid.mail;
-console.log('a');
-
 const keys = require('../config/keys');
-console.log('a');
 
 class Mailer extends helper.Mail {
     constructor({ subject, recipients }, content) {
-        console.log('s');
-
         super();
-        console.log('s');
-
         this.sgApi = sendGrid(keys.sendGridKey);
-        console.log('s');
-
         this.from_email = new helper.Email('no-reply@emaily.com');
         this.subject = subject;
         this.body = new helper.Content('text/html', content);
         this.recipients = this.formatAddresses(recipients);
-
-        console.log('s');
         this.addContent(this.body);
         this.addClickTracking();
         this.addRecipients();
@@ -59,9 +44,6 @@ class Mailer extends helper.Mail {
             path: '/v3/mail/send',
             body: this.toJSON(),
         });
-
-        console.log('Request:\n', request);
-
         const response = await this.sgApi.API(request);
         return response;
     }

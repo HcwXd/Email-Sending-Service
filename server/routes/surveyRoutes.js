@@ -14,11 +14,8 @@ module.exports = (app) => {
         const surveys = await Survey.find({ _user: req.user.id }).select({ recipients: false });
         res.send(surveys);
     });
-    // app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
 
-    app.post('/api/surveys', async (req, res) => {
-        console.log('post(/api/surveys');
-
+    app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
         const { title, subject, body, recipients } = req.body;
 
         const survey = new Survey({
@@ -44,6 +41,9 @@ module.exports = (app) => {
     });
 
     app.post('/api/surveys/webhooks', (req, res) => {
+        console.log('webhook');
+        console.log(req.body);
+
         const p = new Path('/api/surveys/:surveyId/:choice');
 
         _.chain(req.body)

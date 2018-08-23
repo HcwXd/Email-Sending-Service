@@ -8,15 +8,16 @@ import * as actions from '../../actions';
 const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
     const reviewFields = _.map(formFields, ({ name, label }) => {
         return (
-            <div key={name}>
+            <div key={name} style={{ marginBottom: '10px' }}>
                 <label>{label}</label>
                 <div>{formValues[name]}</div>
             </div>
         );
     });
+
     return (
         <div>
-            <h5>Plz Confirm</h5>
+            <h5>Please Confirm</h5>
             {reviewFields}
             <button className="yellow darken-3 btn-flat" onClick={onCancel}>
                 Back
@@ -24,7 +25,6 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
             <button
                 className="green darken-3 right btn-flat"
                 onClick={() => {
-                    console.log('submitSurvey: ', formValues);
                     submitSurvey(formValues, history);
                 }}
             >
@@ -36,7 +36,6 @@ const SurveyFormReview = ({ onCancel, formValues, submitSurvey, history }) => {
 };
 
 function mapStateToProps(state) {
-    console.log('mapStateToProps:', state);
     return { formValues: state.form.surveyForm.values };
 }
 
