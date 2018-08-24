@@ -6,7 +6,7 @@
 
 ```
 $ git clone https://github.com/HcwXd/Email-Sending-Service.git
-$ cd mail-Sending-Service
+$ cd Email-Sending-Service
 $ npm install
 ```
 
